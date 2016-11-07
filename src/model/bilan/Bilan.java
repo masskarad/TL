@@ -1,6 +1,6 @@
 package model.bilan;
 
-import model.liste_tache.ListeTache;
+import model.tache.liste_tache.ListeTache;
 
 public class Bilan
 {

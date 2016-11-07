@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 import org.joda.time.DateTime;
 
-import model.Categorie;
-
 public abstract class Tache implements Serializable
 {
 	private static final long serialVersionUID = -2452413728288347395L;

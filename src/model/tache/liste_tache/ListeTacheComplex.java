@@ -1,4 +1,4 @@
-package tache.model.liste_tache;
+package model.tache.liste_tache;
 
 public class ListeTacheComplex
 {
