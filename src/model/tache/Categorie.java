@@ -44,7 +44,7 @@ public class Categorie
 	 *
 	 * @return
 	 */
-	public Collection getCategories_disponibles()
+	public Collection<String> getCategories_disponibles()
 	{
 		return categories_disponibles;
 	}
