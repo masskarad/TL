@@ -10,7 +10,7 @@ public class Categorie
 	private static final String TRAVAIL          = "TRAVAIL";
 	private static final String PERSONNEL        = "PERSONNEL";
 	private static final int    NOMBRE_CONSTANTE = 3;
-	
+
 	private static Collection<String> categories_disponibles;
 	
 	static
@@ -98,7 +98,7 @@ public class Categorie
 
 	/**
 	 *
-	 * @param p_categorie
+	 * @param p_categorie_a_supprimer
 	 */
 	public static void supprimer(String p_categorie_a_supprimer)
 	{
