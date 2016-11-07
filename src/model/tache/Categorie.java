@@ -33,11 +33,11 @@ public class Categorie
 
 	/**
 	 *
-	 * @param p_categorie
+	 * @param p_valeur
 	 */
-	public Categorie(String p_categorie)
+	public Categorie(String p_valeur)
 	{
-		valeur = p_categorie;
+		valeur = p_valeur;
 	}
 
 	/**
@@ -69,11 +69,11 @@ public class Categorie
 
 	/**
 	 *
-	 * @param p_categorie
+	 * @param p_nouvelle_categorie
 	 */
-	public static void ajouter(String p_categorie)
+	public static void ajouter(String p_nouvelle_categorie)
 	{
-		categories_disponibles.add(p_categorie.toUpperCase());
+		categories_disponibles.add(p_nouvelle_categorie.toUpperCase());
 	}
 
 	/**
@@ -100,14 +100,14 @@ public class Categorie
 	 *
 	 * @param p_categorie
 	 */
-	public static void supprimer(String p_categorie)
+	public static void supprimer(String p_categorie_a_supprimer)
 	{
 		String temp;
 		Iterator<String> iterator = categories_disponibles.iterator();
 		while(iterator.hasNext())
 		{
 			temp = iterator.next();
-			if(temp.toString().equals(p_categorie.toUpperCase()))
+			if(temp.toString().equals(p_categorie_a_supprimer.toUpperCase()))
 			{
 				categories_disponibles.remove(temp);
 				return;
