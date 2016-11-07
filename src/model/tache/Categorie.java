@@ -8,7 +8,7 @@ public class Categorie
 {
 	private static final String SANS_CATEGORIE   = "SANS_CATEGORIE";
 	private static final String TRAVAIL          = "TRAVAIL";
-	private static final String PERSONNEl        = "PERSONNEL";
+	private static final String PERSONNEL        = "PERSONNEL";
 	private static final int    NOMBRE_CONSTANTE = 3;
 	
 	private static Collection<String> categories_disponibles;
@@ -18,7 +18,7 @@ public class Categorie
 		categories_disponibles = new HashSet<>(NOMBRE_CONSTANTE);
 		categories_disponibles.add(SANS_CATEGORIE);
 		categories_disponibles.add(TRAVAIL);
-		categories_disponibles.add(PERSONNEl);
+		categories_disponibles.add(PERSONNEL);
 	}
 	
 	private String valeur;
