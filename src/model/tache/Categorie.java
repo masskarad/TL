@@ -122,7 +122,7 @@ public class Categorie
 	 */
 	public static boolean autoriser(String p_string)
 	{
-		return !p_string.equals(SANS_CATEGORIE) && !p_string.equals(TRAVAIL) && !p_string.equals(PERSONNEl);
+		return !p_string.equals(SANS_CATEGORIE) && !p_string.equals(TRAVAIL) && !p_string.equals(PERSONNEL);
 	}
 	
 	@Override
