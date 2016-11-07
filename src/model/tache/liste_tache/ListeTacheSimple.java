@@ -1,4 +1,5 @@
-package model.liste_tache;
+package tache.model.liste_tache;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
