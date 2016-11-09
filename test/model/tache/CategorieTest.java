@@ -7,12 +7,11 @@ import org.junit.Test;
 @RunWith(Parameterized.class)
 public class CategorieTest
 {
-	private int operator1;
-	private int operator2;
-	private int expectedSum;
-	private int expectedSub;
+	private String operator1;
+	private String operator2;
+	private Categorie categorie;
 
-	public CategorieTest(int operator1, int operator2, int expectedSum, int expectedSub) {
+	public CategorieTest(String operator1, String operator2) {
 		this.operator1 = operator1;
 		this.operator2 = operator2;
 	}
@@ -21,8 +20,8 @@ public class CategorieTest
 	public static Collection<Object[]> setParameters()
 	{
 		Collection<Object[]> params = new ArrayList<>();
-		params.add(new Object[]{2, 1, 3, 1});
-		params.add(new Object[]{5, 2, 7, 3});
+		params.add(new Object[]{MIAOU, MIAOU});
+		params.add(new Object[]{MIAOU, MIAOU});
 
 		return params;
 	}
@@ -30,14 +29,14 @@ public class CategorieTest
 	@Before
 	public void createCategorie()
 	{
-
 		categorie = new Categorie();
 	}
+
 
 	@Test
 	public void testAjouterNouvelleCategorie()
 	{
-
+		categorie
 	}
 	
 	@Test
