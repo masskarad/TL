@@ -11,10 +11,10 @@ public class CategorieTest
 	private String operator2;
 	private Categorie categorie;
 
-	public CategorieTest(String operator1, String operator2)
+	public CategorieTest(String p_operator1, String p_operator2)
 	{
-		operator1 = operator1;
-		operator2 = operator2;
+		operator1 = p_operator1;
+		operator2 = p_operator2;
 	}
 
 	@Parameters
