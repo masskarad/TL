@@ -71,7 +71,7 @@ public class Categorie
 	 *
 	 * @param p_nouvelle_categorie
 	 */
-	public static void ajouter(String p_nouvelle_categorie)
+	public static void addCategorieDisponible(String p_nouvelle_categorie)
 	{
 		categories_disponibles.add(p_nouvelle_categorie.toUpperCase());
 	}
@@ -81,38 +81,21 @@ public class Categorie
 	 * @param p_ancienne_categorie
 	 * @param p_nouvelle_categorie
 	 */
-	public static void renommer(String p_ancienne_categorie, String p_nouvelle_categorie)
+	public static void renameCategorieDisponible(String p_ancienne_categorie, String p_nouvelle_categorie)
 	{
-		HashSet<String> t_categories = new HashSet<>(categories_disponibles.size());
-		Iterator<String> iterator = categories_disponibles.iterator();
-		while(iterator.hasNext())
-		{
-			String temp = iterator.next();
-			if(!temp.toString().equals(p_ancienne_categorie.toUpperCase()))
-				t_categories.add(temp);
-			else
-				t_categories.add(p_nouvelle_categorie.toUpperCase());
-		}
-		categories_disponibles = new HashSet<>(t_categories);
+		categories_disponibles.remove(p_ancienne_categorie.toUpperCase());
+		categories_disponibles.add(p_ancienne_categorie.toUpperCase());
 	}
 
 	/**
 	 *
 	 * @param p_categorie_a_supprimer
 	 */
-	public static void supprimer(String p_categorie_a_supprimer)
+	public static boolean removeCategorieDisponible(String p_categorie_a_supprimer)
 	{
-		String temp;
-		Iterator<String> iterator = categories_disponibles.iterator();
-		while(iterator.hasNext())
-		{
-			temp = iterator.next();
-			if(temp.toString().equals(p_categorie_a_supprimer.toUpperCase()))
-			{
-				categories_disponibles.remove(temp);
-				return;
-			}
-		}
+		if (autoriser(p_categorie_a_supprimer))
+			return categories_disponibles.remove(p_categorie_a_supprimer.toUpperCase());
+		return false;
 	}
 
 	/**
@@ -156,13 +139,13 @@ public class Categorie
 	public static void main(String [] Args)
 	{
 		afficherCategories_disponibles();
-		ajouter("Yolo");
-		ajouter("Yolo");
-		ajouter("Yolo");
+		addCategorieDisponible("Yolo");
+		addCategorieDisponible("Yolo");
+		addCategorieDisponible("Yolo");
 		afficherCategories_disponibles();
-		renommer("Yolo", "Titi");
+		renameCategorieDisponible("Yolo", "Titi");
 		afficherCategories_disponibles();
-		supprimer("SAns_caTEGorie");
+		removeCategorieDisponible("SAns_caTEGorie");
 		afficherCategories_disponibles();
 	}
 }
