@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 public abstract class Tache implements Serializable
 {
@@ -79,6 +80,30 @@ public abstract class Tache implements Serializable
 	public final DateTime getDate_limite()
 	{
 		return date_limite;
+	}
+	
+	public boolean valide()
+	{
+		//DateTimeFormat dtf = new DateTimeFormat();
+		//TODO
+		return true;
+	}
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		return false;
+	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuilder string_builder = new StringBuilder();
+		string_builder.append("Titre       : " + titre + System.getProperty("line.separator"));
+		string_builder.append("Categorie   : " + categorie.toString() + System.getProperty("line.separator"));
+		string_builder.append("Avencement  : " + avencement + System.getProperty("line.separator"));
+		string_builder.append("Date limite : " + date_limite.toString() + System.getProperty("line.separator"));
+		return string_builder.toString();
 	}
 	
 	public abstract boolean estEnRetard();
