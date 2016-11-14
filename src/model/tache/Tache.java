@@ -5,11 +5,13 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Comparator;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTime.Property;
 import org.joda.time.format.DateTimeFormat;
 
-public abstract class Tache implements Serializable
+public abstract class Tache implements Serializable, Comparable<Tache>
 {
 	private static final long serialVersionUID = -2452413728288347395L;
 
@@ -93,6 +95,12 @@ public abstract class Tache implements Serializable
 	public boolean equals(Object o)
 	{
 		return false;
+	}
+	
+	@Override
+	public int compareTo(Tache o)
+	{
+		return titre.compareTo(o.titre) + date_limite.compareTo(o.date_limite);
 	}
 	
 	@Override
