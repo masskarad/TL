@@ -4,7 +4,7 @@ import java.util.*;
 
 import model.tache.Tache;
 
-public abstract class ListeTache implements SortedSet<Tache>, Comparator<Tache>
+public abstract class ListeTache implements SortedSet<Tache>
 {
 
     private SortedSet<Tache> liste_taches;
@@ -16,16 +16,13 @@ public abstract class ListeTache implements SortedSet<Tache>, Comparator<Tache>
 
     public ListeTache()
     {
-        liste_taches = new TreeSet<Tache>((Comparator)this);
+        liste_taches = new TreeSet<Tache>();
     }
 
     public ListeTache(Tache[] p_liste_taches)
     {
         //liste_taches = Arrays.asList(p_liste_taches);
     }
-
-    @Override
-    public abstract int compare(Tache tache, Tache t1);
 
     @Override
     public Comparator<? super Tache> comparator()
@@ -145,8 +142,11 @@ public abstract class ListeTache implements SortedSet<Tache>, Comparator<Tache>
     public String toString()
     {
     	StringBuilder string_builder = new StringBuilder();
-    	for(Tache tache : liste_taches)
-    		string_builder.append(tache.toString() + System.getProperty("line.separator"));
+    	
+    	Iterator<Tache> iterator = liste_taches.iterator();
+    	while(iterator.hasNext())
+    		string_builder.append(iterator.next().toString() + System.getProperty("line.separator"));
+    	
     	return string_builder.toString();
     }
 }
