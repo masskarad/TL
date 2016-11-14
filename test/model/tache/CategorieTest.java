@@ -35,7 +35,7 @@ public class CategorieTest
 	{
 		Collection<Object[]> params = new ArrayList<>();
 		params.add(new Object[]{"LECTURE", "REVISIONS", "LECTURE", "REVISIONS"});
-		params.add(new Object[]{"LECTURE", "revisions", "LECTURE", "REVISIONS"});
+		params.add(new Object[]{"LECTURE", "revisions", "LECtURE", "REVISIONS"});
 		params.add(new Object[]{"lecture", "REVISIONS", "LECTURE", "REVISIONS"});
 		params.add(new Object[]{"lecture", "revisions", "LECTURE", "REVISIONS"});
 
@@ -52,27 +52,33 @@ public class CategorieTest
 	@Test
 	public void testAjouterNouvelleCategorie()
 	{
-		categorie.addCategorieDisponible(categorie1);
-		Assert.assertTrue(categorie.getCategories_disponibles().contains(expected1));
-		Assert.assertFalse(categorie.getCategories_disponibles().contains(expected2));
+		Categorie.addCategorieDisponible(categorie1);
+		Assert.assertTrue(Categorie.containsCategories_disponibles(expected1));
+		Assert.assertFalse(Categorie.containsCategories_disponibles(expected2));
 	}
 	
 	@Test
 	public void testSupprimerExistant()
 	{
-		categorie.addCategorieDisponible(categorie1);
+		Categorie.addCategorieDisponible(categorie1);
+		Categorie.removeCategorieDisponible(expected1);
+		Assert.assertFalse(Categorie.containsCategories_disponibles(expected1));
 	}
 
 	@Test
 	public void testSupprimerNonExistant()
 	{
-		
+		Categorie.addCategorieDisponible(categorie1);
+		Categorie.removeCategorieDisponible(expected1);
+		Assert.assertFalse(Categorie.removeCategorieDisponible(expected2));
+		Assert.assertFalse(Categorie.containsCategories_disponibles(expected2));
 	}
 	
 	@Test
 	public void testModifierExistant()
 	{
-		
+		System.out.println();
+		System.out.println();
 	}
 	
 
