@@ -10,19 +10,26 @@ public final class TacheAuLong extends Tache
 	HashMap<Integer, Long> etapes;
 	private long duree;
 	
-	public TacheAuLong(DateTime p_date_limite) throws TacheException
+	public TacheAuLong()
+	{
+		super();
+	}
+	
+	public Tache(String p_titre)
+	{
+		super(p_titre);
+	}
+	
+	public Tache(DateTime p_date_limite)
 	{
 		super(p_date_limite);
-		
-		date_debut = DateTime.now();
-		
-		if(date_debut.isAfter(getDate_limite()) || date_debut.isEqual(getDate_limite()) )
-			throw new TacheException("Date debut > Date limite");
-		
-		etapes = new HashMap<Integer, Long>();
-		duree = getDate_limite().getMillis() - date_debut.getMillis();
 	}
-
+	
+	public Tache(String p_titre, String p_categorie, DateTime p_date_limite)
+	{
+		super(p_titre, p_categorie, p_date_limite);
+	 }
+	
 	public TacheAuLong(DateTime p_date_limite, DateTime p_date_debut) throws TacheException
 	{
 		super(p_date_limite);
@@ -43,7 +50,6 @@ public final class TacheAuLong extends Tache
 		etapes.put(100, 0l);
 	}
 		
-	
 	@Override
 	public boolean estEnRetard()
 	{
