@@ -44,7 +44,7 @@ public class Categorie
 	 *
 	 * @return
 	 */
-	public static Collection<String> getCategories_disponibles()
+	public static Collection<String> getCategoriesDisponibles()
 	{
 		return categories_disponibles;
 	}
@@ -81,10 +81,12 @@ public class Categorie
 	 * @param p_ancienne_categorie
 	 * @param p_nouvelle_categorie
 	 */
-	public static void renameCategorieDisponible(String p_ancienne_categorie, String p_nouvelle_categorie)
+	public static boolean renameCategorieDisponible(String p_ancienne_categorie, String p_nouvelle_categorie)
 	{
-		categories_disponibles.remove(p_ancienne_categorie.toUpperCase());
-		categories_disponibles.add(p_nouvelle_categorie.toUpperCase());
+		if(categories_disponibles.remove(p_ancienne_categorie.toUpperCase()))
+			return categories_disponibles.add(p_nouvelle_categorie.toUpperCase());
+		
+		return false;
 	}
 
 	/**
@@ -95,6 +97,7 @@ public class Categorie
 	{
 		if (autoriser(p_categorie_a_supprimer))
 			return categories_disponibles.remove(p_categorie_a_supprimer.toUpperCase());
+		
 		return false;
 	}
 
@@ -117,27 +120,27 @@ public class Categorie
 	/**
 	 *
 	 */
-	public static void afficherCategories_disponibles()
+	public static void afficherCategoriesDisponibles()
 	{
 		System.out.println(categories_disponibles.toString());
 	}
 
-	public static boolean containsCategories_disponibles(String p_categorie)
+	public static boolean containsCategoriesDisponibles(String p_categorie)
 	{
 		return categories_disponibles.contains(p_categorie.toUpperCase());
 	}
 	
 	public static void main(String [] Args)
 	{
-		afficherCategories_disponibles();
+		afficherCategoriesDisponibles();
 		addCategorieDisponible("Yolo");
 		addCategorieDisponible("Yolo");
 		addCategorieDisponible("Yolo");
-		afficherCategories_disponibles();
+		afficherCategoriesDisponibles();
 		renameCategorieDisponible("Yolo", "Titi");
-		afficherCategories_disponibles();
+		afficherCategoriesDisponibles();
 		System.out.println(removeCategorieDisponible("SAns_caTEGorie"));
-		System.out.println(getCategories_disponibles().contains("TITI"));
-		afficherCategories_disponibles();
+		System.out.println(getCategoriesDisponibles().contains("TITI"));
+		afficherCategoriesDisponibles();
 	}
 }
