@@ -26,8 +26,8 @@ public class CategorieTest
 	{
 		categorie1 = p_categorie1;
 		categorie2 = p_categorie2;
-		expected1 = p_expected1;
-		expected2 = p_expected2;
+		expected1  = p_expected1;
+		expected2  = p_expected2;
 	}
 
 	@Parameters
@@ -48,7 +48,6 @@ public class CategorieTest
 		Categorie.removeCategorieDisponible(expected1);
 		Categorie.removeCategorieDisponible(expected2);
 	}
-
 
 	@Test
 	public void testAjouterNouvelleCategorie()
@@ -84,7 +83,6 @@ public class CategorieTest
 		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected1));
 	}
 	
-
 	@Test
 	public void testModifierNonExistant()
 	{
