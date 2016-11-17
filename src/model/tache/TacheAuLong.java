@@ -15,17 +15,17 @@ public final class TacheAuLong extends Tache
 		super();
 	}
 	
-	public Tache(String p_titre)
+	public TacheAuLong(String p_titre)
 	{
 		super(p_titre);
 	}
 	
-	public Tache(DateTime p_date_limite)
+	public TacheAuLong(DateTime p_date_limite)
 	{
 		super(p_date_limite);
 	}
 	
-	public Tache(String p_titre, String p_categorie, DateTime p_date_limite)
+	public TacheAuLong(String p_titre, String p_categorie, DateTime p_date_limite)
 	{
 		super(p_titre, p_categorie, p_date_limite);
 	 }

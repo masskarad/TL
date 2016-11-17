@@ -27,7 +27,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		titre       = SANS_TITRE;
 		categorie   = new Categorie();
 		avencement  = 0;
-		date_limite = DateTime.now();
+		date_limite = DateTime.now().plusDays(1);
 	}
 	
 	public Tache(String p_titre)
@@ -35,7 +35,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		titre       = p_titre;
 		categorie   = new Categorie();
 		avencement  = 0;
-		date_limite = DateTime.now();
+		date_limite = DateTime.now().plusDays(1);
 	}
 	
 	public Tache(DateTime p_date_limite)
@@ -120,7 +120,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	{
 		try
 		{
-			Tache tache = new TacheAuLong(DateTime.now());
+			Tache tache = new TacheAuLong(DateTime.now().minus(1),DateTime.now());
 			tache.avencement = 42;
 			FileOutputStream fileOut = new FileOutputStream("/home/harkame/tache.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
