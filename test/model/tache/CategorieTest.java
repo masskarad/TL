@@ -42,10 +42,11 @@ public class CategorieTest
 		return params;
 	}
 
-	@Before
-	public void createCategorie()
+	@After
+	public void removeCategorie()
 	{
-		categorie = new Categorie();
+		Categorie.removeCategorieDisponible(expected1);
+		Categorie.removeCategorieDisponible(expected2);
 	}
 
 
@@ -53,8 +54,8 @@ public class CategorieTest
 	public void testAjouterNouvelleCategorie()
 	{
 		Categorie.addCategorieDisponible(categorie1);
-		Assert.assertTrue(Categorie.containsCategories_disponibles(expected1));
-		Assert.assertFalse(Categorie.containsCategories_disponibles(expected2));
+		Assert.assertTrue(Categorie.containsCategoriesDisponibles(expected1));
+		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected2));
 	}
 	
 	@Test
@@ -62,7 +63,7 @@ public class CategorieTest
 	{
 		Categorie.addCategorieDisponible(categorie1);
 		Categorie.removeCategorieDisponible(expected1);
-		Assert.assertFalse(Categorie.containsCategories_disponibles(expected1));
+		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected1));
 	}
 
 	@Test
@@ -70,21 +71,27 @@ public class CategorieTest
 	{
 		Categorie.addCategorieDisponible(categorie1);
 		Categorie.removeCategorieDisponible(expected1);
-		Assert.assertFalse(Categorie.removeCategorieDisponible(expected2));
-		Assert.assertFalse(Categorie.containsCategories_disponibles(expected2));
+		Assert.assertFalse(Categorie.removeCategorieDisponible(expected1));
+		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected1));
 	}
 	
 	@Test
 	public void testModifierExistant()
 	{
-		System.out.println();
-		System.out.println();
+		Categorie.addCategorieDisponible(categorie1);
+		Categorie.renameCategorieDisponible(categorie1, categorie2);
+		Assert.assertTrue(Categorie.containsCategoriesDisponibles(expected2));
+		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected1));
 	}
 	
 
 	@Test
 	public void testModifierNonExistant()
 	{
-		
+		Categorie.addCategorieDisponible(categorie1);
+		Categorie.removeCategorieDisponible(expected1);
+		Categorie.renameCategorieDisponible(categorie1, categorie2);
+		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected1));
+		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected2));
 	}
 }
