@@ -26,18 +26,18 @@ public class CategorieTest
 	{
 		categorie1 = p_categorie1;
 		categorie2 = p_categorie2;
-		expected1  = p_expected1;
-		expected2  = p_expected2;
+		expected1 = p_expected1;
+		expected2 = p_expected2;
 	}
 
 	@Parameters
 	public static Collection<Object[]> setParameters()
 	{
 		Collection<Object[]> params = new ArrayList<>();
-		params.add(new Object[]{"LECTURE", "REVISIONS", "LECTURE", "REVISIONS"});
-		params.add(new Object[]{"LECTURE", "revisions", "LECtURE", "REVISIONS"});
-		params.add(new Object[]{"lecture", "REVISIONS", "LECTURE", "REVISIONS"});
-		params.add(new Object[]{"lecture", "revisions", "LECTURE", "REVISIONS"});
+		params.add(new Object[] { "LECTURE", "REVISIONS", "LECTURE", "REVISIONS" });
+		params.add(new Object[] { "LECTURE", "revisions", "LECtURE", "REVISIONS" });
+		params.add(new Object[] { "lecture", "REVISIONS", "LECTURE", "REVISIONS" });
+		params.add(new Object[] { "lecture", "revisions", "LECTURE", "REVISIONS" });
 
 		return params;
 	}
@@ -56,7 +56,7 @@ public class CategorieTest
 		Assert.assertTrue(Categorie.containsCategoriesDisponibles(expected1));
 		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected2));
 	}
-	
+
 	@Test
 	public void testSupprimerExistant()
 	{
@@ -73,7 +73,7 @@ public class CategorieTest
 		Assert.assertFalse(Categorie.removeCategorieDisponible(expected1));
 		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected1));
 	}
-	
+
 	@Test
 	public void testModifierExistant()
 	{
@@ -82,7 +82,7 @@ public class CategorieTest
 		Assert.assertTrue(Categorie.containsCategoriesDisponibles(expected2));
 		Assert.assertFalse(Categorie.containsCategoriesDisponibles(expected1));
 	}
-	
+
 	@Test
 	public void testModifierNonExistant()
 	{
