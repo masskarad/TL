@@ -22,7 +22,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	private byte avencement;
 	private DateTime date_limite;
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS.TESTED)
 	public Tache()
 	{
 		titre       = SANS_TITRE;
@@ -31,7 +31,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		date_limite = DateTime.now().plus(1);
 	}
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS.TESTED)
 	public Tache(String p_titre)
 	{
 		titre       = p_titre;
@@ -40,7 +40,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		date_limite = DateTime.now().plus(1);
 	}
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS.TESTED)
 	public Tache(DateTime p_date_limite)
 	{
 		titre       = SANS_TITRE;
@@ -49,7 +49,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		date_limite = p_date_limite;
 	}
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS.TESTED)
 	public Tache(String p_titre, String p_categorie, DateTime p_date_limite)
 	{
 		titre       = p_titre;
