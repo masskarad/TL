@@ -14,6 +14,7 @@ public final class ListeTacheSimple extends ListeTache
 		Tache t4 = new TachePonctuelle("We");
 		Tache t5 = t3;
 		Tache t6 = new TachePonctuelle("We");
+		Tache t7 = new TachePonctuelle("We");
 		ListeTache liste_tache_simple = new ListeTacheSimple();
 		liste_tache_simple.add(t1);
 		Thread.sleep(150);
@@ -28,6 +29,8 @@ public final class ListeTacheSimple extends ListeTache
 		liste_tache_simple.add(t5);
 		Thread.sleep(600);
 		liste_tache_simple.add(t6);
+		Thread.sleep(600);
+		liste_tache_simple.add(t7);
 		System.out.println(liste_tache_simple.toString());
 		System.out.println("Taille : " + liste_tache_simple.size());
 	}

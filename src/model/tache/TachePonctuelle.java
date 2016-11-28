@@ -2,6 +2,9 @@ package model.tache;
 
 import org.joda.time.DateTime;
 
+import annotation.TLTest;
+import annotation.TLTest.STATUS;
+
 public final class TachePonctuelle extends Tache
 {
 
@@ -25,8 +28,9 @@ public final class TachePonctuelle extends Tache
 		super(p_titre, p_categorie, p_date_limite);
 	}
 	
+	@TLTest(status = STATUS.TESTED)
 	public boolean estEnRetard()
 	{
-		return DateTime.now().equals(getDate_limite().plus(1));
+		return DateTime.now().isAfter(getDateLimite());
 	}
 }

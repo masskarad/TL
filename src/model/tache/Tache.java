@@ -17,10 +17,10 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 
 	private final static String SANS_TITRE = "SANS_TITRE";
 
-	private String titre;
+	private String    titre;
 	private Categorie categorie;
-	private byte avencement;
-	private DateTime date_limite;
+	private byte      avencement;
+	private DateTime  date_limite;
 	
 	@TLTest(status = STATUS.TESTED)
 	public Tache()
@@ -28,7 +28,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		titre       = SANS_TITRE;
 		categorie   = new Categorie();
 		avencement  = 0;
-		date_limite = DateTime.now().plus(1);
+		date_limite = DateTime.now().plusDays(1);
 	}
 	
 	@TLTest(status = STATUS.TESTED)
@@ -37,7 +37,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		titre       = p_titre;
 		categorie   = new Categorie();
 		avencement  = 0;
-		date_limite = DateTime.now().plus(1);
+		date_limite = DateTime.now().plusDays(1);
 	}
 	
 	@TLTest(status = STATUS.TESTED)
@@ -89,7 +89,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	}
 	
 	@TLTest(status = STATUS.NOTEST)
-	public final DateTime getDate_limite()
+	public final DateTime getDateLimite()
 	{
 		return date_limite;
 	}
@@ -121,9 +121,9 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	public String toString()
 	{
 		StringBuilder string_builder = new StringBuilder();
-		string_builder.append("Titre       : " + titre + System.getProperty("line.separator"));
-		string_builder.append("Categorie   : " + categorie.toString() + System.getProperty("line.separator"));
-		string_builder.append("Avencement  : " + avencement + System.getProperty("line.separator"));
+		string_builder.append("Titre       : " + titre                  + System.getProperty("line.separator"));
+		string_builder.append("Categorie   : " + categorie.toString()   + System.getProperty("line.separator"));
+		string_builder.append("Avencement  : " + avencement             + System.getProperty("line.separator"));
 		string_builder.append("Date limite : " + date_limite.toString() + System.getProperty("line.separator"));
 		return string_builder.toString();
 	}

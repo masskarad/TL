@@ -4,11 +4,14 @@ import java.util.HashMap;
 
 import org.joda.time.DateTime;
 
+import annotation.TLTest;
+import annotation.TLTest.STATUS;
+
 public final class TacheAuLong extends Tache
 {
-	private DateTime date_debut;
+	private DateTime       date_debut;
 	HashMap<Integer, Long> etapes;
-	private long duree;
+	private long           duree;
 	
 	public TacheAuLong()
 	{
@@ -34,7 +37,7 @@ public final class TacheAuLong extends Tache
 	{
 		super(p_date_limite);
 		
-		if(p_date_debut.isAfter(getDate_limite()))
+		if(p_date_debut.isAfter(getDateLimite()))
 			throw new TacheException("Date debut > Date limite");
 		
 		date_debut = p_date_debut;
@@ -50,9 +53,10 @@ public final class TacheAuLong extends Tache
 		etapes.put(100, 0l);
 	}
 		
-	@Override
+	@TLTest(status = STATUS.TESTED)
 	public boolean estEnRetard()
 	{
-		return true;
+		//return DateTime.now().isAfter(getDate_limite());
+		return false;
 	}
 }
