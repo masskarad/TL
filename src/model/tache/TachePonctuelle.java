@@ -5,6 +5,7 @@ import org.joda.time.DateTime;
 import annotation.TLTest;
 import annotation.TLTest.STATUS;
 
+@SuppressWarnings("serial")
 public final class TachePonctuelle extends Tache
 {
 
