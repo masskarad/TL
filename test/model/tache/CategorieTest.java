@@ -26,8 +26,8 @@ public class CategorieTest
 	{
 		categorie1 = p_categorie1;
 		categorie2 = p_categorie2;
-		expected1 = p_expected1;
-		expected2 = p_expected2;
+		expected1  = p_expected1;
+		expected2  = p_expected2;
 	}
 
 	@Parameters

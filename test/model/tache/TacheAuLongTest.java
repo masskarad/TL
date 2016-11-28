@@ -1,7 +1,5 @@
 package model.tache;
 
-import static org.junit.Assert.*;
-
 import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Before;
