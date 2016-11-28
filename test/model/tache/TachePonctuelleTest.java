@@ -1,7 +1,5 @@
 package model.tache;
 
-import static org.junit.Assert.*;
-
 import org.joda.time.DateTime;
 import org.junit.*;
 import org.junit.Test;
@@ -9,28 +7,26 @@ import org.junit.Test;
 public class TachePonctuelleTest
 {
 
-	TachePonctuelle tacheVide;
-	TachePonctuelle tacheAvecDate;
-	TachePonctuelle tacheAvecNom;
-	TachePonctuelle tacheAvecCategorie;
-	TachePonctuelle tacheComplete;
+	Tache tache_vide;
+	Tache tache_avec_date;
+	Tache tache_avec_nom;
+	Tache tache_complete;
 
 	@Before
 	public void CreationTaches()
 	{
-		tacheVide = new TachePonctuelle();
-		tacheAvecDate = new TachePonctuelle(new DateTime().minus(1));
-		tacheAvecNom = new TachePonctuelle("Coder");
-		tacheComplete = new TachePonctuelle("Java", "TRAVAIL", new DateTime().minus(1));
+		tache_vide      = new TachePonctuelle();
+		tache_avec_date = new TachePonctuelle(new DateTime().minusDays(1));
+		tache_avec_nom  = new TachePonctuelle("Coder");
+		tache_complete  = new TachePonctuelle("Java", "TRAVAIL", new DateTime().minusDays(1));
 	}
 
 	@Test
 	public void testEstEnRetard()
 	{
-		Assert.assertFalse(tacheVide.estEnRetard());
-		Assert.assertTrue(tacheAvecDate.estEnRetard());
-		Assert.assertTrue(tacheComplete.estEnRetard());
-		Assert.assertFalse(tacheAvecNom.estEnRetard());
+		Assert.assertFalse(tache_vide.estEnRetard());
+		Assert.assertTrue(tache_avec_date.estEnRetard());
+		Assert.assertTrue(tache_complete.estEnRetard());
+		Assert.assertFalse(tache_avec_nom.estEnRetard());
 	}
-
 }
