@@ -34,4 +34,10 @@ public final class TachePonctuelle extends Tache
 	{
 		return DateTime.now().isAfter(getDateLimite());
 	}
+
+	@Override
+	public void incrementeAvencement()
+	{
+		setAvencement((byte)100);
+	}
 }
