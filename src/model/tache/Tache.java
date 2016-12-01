@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import annotation.TLTest;
 import annotation.TLTest.STATUS;
+import model.tache.categorie.Categories;
 
 import org.joda.time.DateTime;
 
@@ -18,7 +19,6 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	private final static String SANS_TITRE = "SANS_TITRE";
 
 	private String    titre;
-	private Categorie categorie;
 	private byte      avencement;
 	private DateTime  date_limite;
 	
@@ -26,7 +26,6 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	public Tache()
 	{
 		titre       = SANS_TITRE;
-		categorie   = new Categorie();
 		avencement  = 0;
 		date_limite = DateTime.now().plusDays(1);
 	}
@@ -35,7 +34,6 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	public Tache(String p_titre)
 	{
 		titre       = p_titre;
-		categorie   = new Categorie();
 		avencement  = 0;
 		date_limite = DateTime.now().plusDays(1);
 	}
@@ -44,16 +42,15 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	public Tache(DateTime p_date_limite)
 	{
 		titre       = SANS_TITRE;
-		categorie   = new Categorie();
 		avencement  = 0;
 		date_limite = p_date_limite;
 	}
 	
 	@TLTest(status = STATUS.TESTED)
-	public Tache(String p_titre, String p_categorie, DateTime p_date_limite)
+	public Tache(String p_titre, String p_categorie, DateTime p_date_limite) throws Exception
 	{
+		Categories.ajouterCategorie(p_categorie);
 		titre       = p_titre;
-		categorie   = new Categorie(p_categorie);
 		avencement  = 0;
 		date_limite = p_date_limite;
 	}
@@ -65,21 +62,9 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	}
 	
 	@TLTest(status = STATUS.NOTEST)
-	public final void setCategorie(String p_nouvelle_categorie)
-	{
-		categorie.setValeur(p_nouvelle_categorie);
-	}
-	
-	@TLTest(status = STATUS.NOTEST)
 	public final String getTitre()
 	{
 		return titre;
-	}
-	
-	@TLTest(status = STATUS.NOTEST)
-	public final Categorie getCategorie()
-	{
-		return categorie;
 	}
 	
 	@TLTest(status = STATUS.NOTEST)
@@ -122,7 +107,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	{
 		StringBuilder string_builder = new StringBuilder();
 		string_builder.append("Titre       : " + titre                  + System.getProperty("line.separator"));
-		string_builder.append("Categorie   : " + categorie.toString()   + System.getProperty("line.separator"));
+		string_builder.append("Categorie   : " + Categories.getCategorie(this)   + System.getProperty("line.separator"));
 		string_builder.append("Avencement  : " + avencement             + System.getProperty("line.separator"));
 		string_builder.append("Date limite : " + date_limite.toString() + System.getProperty("line.separator"));
 		return string_builder.toString();
