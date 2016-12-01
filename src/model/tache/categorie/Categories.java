@@ -1,6 +1,7 @@
 package model.tache.categorie;
 
 import java.util.Map.Entry;
+import java.util.SortedMap;
 
 import org.joda.time.DateTime;
 
@@ -17,11 +18,11 @@ public abstract class Categories
 	private static final String TITRE_CATEGORIE_TRAVAIL        = "TRAVAIL";
 	private static final String TITRE_CATEGORIE_PERSONNEL      = "PERSONNEL";
 					
-	private static TreeMap<CharSequence, ListeTache> categories;
+	private static SortedMap<String, ListeTache> categories;
 	
 	static
 	{
-		categories = new TreeMap<CharSequence, ListeTache>();
+		categories = new TreeMapCategorie();
 		categories.put(TITRE_CATEGORIE_SANS_CATEGORIE, new ListeTacheSimple());
 		categories.put(TITRE_CATEGORIE_TRAVAIL, new ListeTacheSimple());
 		categories.put(TITRE_CATEGORIE_PERSONNEL, new ListeTacheSimple());
@@ -29,15 +30,15 @@ public abstract class Categories
 	
 	public Categories()
 	{
-		categories = new TreeMap<CharSequence, ListeTache>();
+		categories = new TreeMap<String, ListeTache>();
 	}
 	
 	public static void ajouterCategorie(String p_nouvelle_categorie) throws Exception
 	{
-		if(!autoriser(p_nouvelle_categorie) || !autoriser(p_nouvelle_categorie))
+		if(!autoriser(p_nouvelle_categorie))
 			throw new Exception();
 		
-		if(categories.get(p_nouvelle_categorie) != null)
+		if(categories.containsKey(p_nouvelle_categorie))
 			throw new Exception();
 		
 		categories.put(p_nouvelle_categorie, new ListeTacheSimple());
@@ -45,38 +46,45 @@ public abstract class Categories
 	
 	public static void supprimerCategorie(String p_categorie) throws Exception
 	{
-		if(!autoriser(p_categorie) || !autoriser(p_categorie))
+		if(!autoriser(p_categorie))
 			throw new Exception();
 		
-		if(categories.get(p_categorie) == null)
+		if(!categories.containsKey(p_categorie))
 			throw new Exception();
 		
-		ListeTache t_liste_tache_simple = categories.get(p_categorie.toUpperCase());
-		categories.remove(p_categorie.toUpperCase());
+		System.out.println(p_categorie);
+		
+		ListeTache t_liste_tache_simple = categories.get(p_categorie);
+		if(t_liste_tache_simple == null)
+			return;
+		categories.remove(p_categorie);
+		
 		categories.get(TITRE_CATEGORIE_SANS_CATEGORIE).addAll(t_liste_tache_simple);
 	}
 	
 	public static void renommerCategorie(String p_ancienne_categorie, String p_nouvelle_categorie) throws Exception
 	{
-		if((!autoriser(p_ancienne_categorie) || !autoriser(p_ancienne_categorie)) ||
-				(!autoriser(p_nouvelle_categorie) || !autoriser(p_nouvelle_categorie)))
+		if(!autoriser(p_ancienne_categorie) || !autoriser(p_nouvelle_categorie))
 			throw new Exception();
 		
-		if(categories.get(p_ancienne_categorie) == null)
+		if(!categories.containsKey(p_ancienne_categorie))
 			throw new Exception();
 		
-		if(categories.get(p_nouvelle_categorie) != null)
+		if(categories.containsKey(p_nouvelle_categorie))
 			throw new Exception();
 		
 		ListeTache t_liste_tache_simple = new ListeTacheSimple();
-		t_liste_tache_simple.addAll(categories.get(p_ancienne_categorie.toUpperCase()));
-		categories.put(p_nouvelle_categorie.toUpperCase(), t_liste_tache_simple);
+		
+		t_liste_tache_simple.addAll(categories.get(p_ancienne_categorie));
+		
+		categories.put(p_nouvelle_categorie, t_liste_tache_simple);
+		
 		categories.remove(p_ancienne_categorie);
 	}
 	
 	public static CharSequence getCategorie(Tache p_tache)
 	{
-		for (Entry<CharSequence, ListeTache> e : categories.entrySet())
+		for (Entry<String, ListeTache> e : categories.entrySet())
 			if(e.getValue().contains(p_tache))
 				return e.getKey();
 		
@@ -88,6 +96,16 @@ public abstract class Categories
 		return (!p_categorie.equals(TITRE_CATEGORIE_SANS_CATEGORIE) && 
 				!p_categorie.equals(TITRE_CATEGORIE_TRAVAIL) &&
 				!p_categorie.equals(TITRE_CATEGORIE_PERSONNEL));
+	}
+	
+	public static void ajouterTaches(String p_categorie, ListeTache p_liste_tache)
+	{
+		categories.put(p_categorie, p_liste_tache);
+	}
+	
+	public static void ajouterTache(String p_categorie, Tache p_tache)
+	{
+		categories.get(p_categorie).add(p_tache);
 	}
 	
 	public static void main(String [] Args) throws Exception
@@ -111,34 +129,31 @@ public abstract class Categories
 		
 		lt2.add(c4);
 		
-		categories.put(TITRE_CATEGORIE_TRAVAIL, lt1);
-		categories.put(TITRE_CATEGORIE_PERSONNEL, lt2);
-		
-		//System.out.println(categories.toString());
+		categories.put("Important", lt1);
+		categories.put("Osef", lt2);
 		
 		System.out.println(getCategorie(c1));
 		System.out.println(getCategorie(c2));
 		System.out.println(getCategorie(c3));
 		System.out.println(getCategorie(c4));
 		
-		supprimerCategorie(TITRE_CATEGORIE_TRAVAIL);
+		supprimerCategorie("Important");
 		
 		System.out.println("-----------------------------");
 		
 		System.out.println(getCategorie(c1));
 		
-		renommerCategorie(TITRE_CATEGORIE_PERSONNEL, "Yolo");
+		renommerCategorie("Osef", "Yolo");
 		System.out.println(getCategorie(c4));
 		
 		System.out.println("-----------------------------");
 		
 		System.out.println(categories.toString());
 		
-		categories.put(TITRE_CATEGORIE_SANS_CATEGORIE, new ListeTacheSimple());
+		categories.put("Test", new ListeTacheSimple());
 		
 		System.out.println("-----------------------------");
 		
 		System.out.println(categories.toString());
 	}
-
 }
