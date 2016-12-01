@@ -8,14 +8,12 @@ import java.io.Serializable;
 
 import annotation.TLTest;
 import annotation.TLTest.STATUS;
-import model.tache.categorie.Categories;
 
 import org.joda.time.DateTime;
 
+@SuppressWarnings("serial")
 public abstract class Tache implements Serializable, Comparable<Tache>
 {
-	private static final long serialVersionUID = -2452413728288347395L;
-
 	private final static String SANS_TITRE = "SANS_TITRE";
 
 	private String    titre;
@@ -47,9 +45,8 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	}
 	
 	@TLTest(status = STATUS.TESTED)
-	public Tache(String p_titre, String p_categorie, DateTime p_date_limite) throws Exception
+	public Tache(String p_titre, String p_categorie, DateTime p_date_limite)
 	{
-		Categories.ajouterCategorie(p_categorie);
 		titre       = p_titre;
 		avencement  = 0;
 		date_limite = p_date_limite;
@@ -60,7 +57,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	{
 		titre = p_nouveau_titre;
 	}
-	
+		
 	@TLTest(status = STATUS.NOTEST)
 	public final String getTitre()
 	{
@@ -72,6 +69,13 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	{
 		return avencement;
 	}
+	
+	protected final void setAvencement(byte p_avencement)
+	{
+		avencement = p_avencement;
+	}
+	
+	public abstract void incrementeAvencement();
 	
 	@TLTest(status = STATUS.NOTEST)
 	public final DateTime getDateLimite()
@@ -107,7 +111,6 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	{
 		StringBuilder string_builder = new StringBuilder();
 		string_builder.append("Titre       : " + titre                  + System.getProperty("line.separator"));
-		string_builder.append("Categorie   : " + Categories.getCategorie(this)   + System.getProperty("line.separator"));
 		string_builder.append("Avencement  : " + avencement             + System.getProperty("line.separator"));
 		string_builder.append("Date limite : " + date_limite.toString() + System.getProperty("line.separator"));
 		return string_builder.toString();
