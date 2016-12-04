@@ -4,7 +4,6 @@ import model.tache.liste_tache.ListeTache;
 
 public class Bilan
 {
-	private Periode periode;
 	private ListeTache taches_realises;
 	
 	public Bilan()

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.joda.time.DateTime;
 
 import annotation.TLTest;
-import annotation.TLTest.STATUS;
+import annotation.TLTest.STATUS_TEST;
 
 @SuppressWarnings("serial")
 public final class TacheAuLong extends Tache
@@ -104,7 +104,7 @@ public final class TacheAuLong extends Tache
 		etapes.put(100, 0l);
 	}
 		
-	@TLTest(status = STATUS.TOTEST)
+	@TLTest(status = STATUS_TEST.TOTEST)
 	public boolean estEnRetard()
 	{
 		return getDateLimite().getMillis() < etapes.get(getAvencement());
