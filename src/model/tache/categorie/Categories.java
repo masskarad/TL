@@ -33,7 +33,7 @@ public abstract class Categories
 		categories = new TreeMap<String, ListeTache>();
 	}
 	
-	public static void ajouterCategorie(String p_nouvelle_categorie) throws Exception
+	public static void addCategorie(String p_nouvelle_categorie) throws Exception
 	{
 		if(!autoriser(p_nouvelle_categorie))
 			throw new Exception();
@@ -44,7 +44,7 @@ public abstract class Categories
 		categories.put(p_nouvelle_categorie, new ListeTacheSimple());
 	}
 	
-	public static void supprimerCategorie(String p_categorie) throws Exception
+	public static void removeCategorie(String p_categorie) throws Exception
 	{
 		if(!autoriser(p_categorie))
 			throw new Exception();
@@ -62,7 +62,14 @@ public abstract class Categories
 		categories.get(TITRE_CATEGORIE_SANS_CATEGORIE).addAll(t_liste_tache_simple);
 	}
 	
-	public static void renommerCategorie(String p_ancienne_categorie, String p_nouvelle_categorie) throws Exception
+	public static boolean containsCategorie(String p_categorie)
+	{
+		if (categories.containsKey(p_categorie))
+			return true;
+		return false;
+	}
+	
+	public static void renameCategorie(String p_ancienne_categorie, String p_nouvelle_categorie) throws Exception
 	{
 		if(!autoriser(p_ancienne_categorie) || !autoriser(p_nouvelle_categorie))
 			throw new Exception();
@@ -98,12 +105,12 @@ public abstract class Categories
 				!p_categorie.equals(TITRE_CATEGORIE_PERSONNEL));
 	}
 	
-	public static void ajouterTaches(String p_categorie, ListeTache p_liste_tache)
+	public static void addTaches(String p_categorie, ListeTache p_liste_tache)
 	{
 		categories.put(p_categorie, p_liste_tache);
 	}
 	
-	public static void ajouterTache(String p_categorie, Tache p_tache)
+	public static void addTache(String p_categorie, Tache p_tache)
 	{
 		categories.get(p_categorie).add(p_tache);
 	}
@@ -137,13 +144,13 @@ public abstract class Categories
 		System.out.println(getCategorie(c3));
 		System.out.println(getCategorie(c4));
 		
-		supprimerCategorie("Important");
+		removeCategorie("Important");
 		
 		System.out.println("-----------------------------");
 		
 		System.out.println(getCategorie(c1));
 		
-		renommerCategorie("Osef", "Yolo");
+		renameCategorie("Osef", "Yolo");
 		System.out.println(getCategorie(c4));
 		
 		System.out.println("-----------------------------");

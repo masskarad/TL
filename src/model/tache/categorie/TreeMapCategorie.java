@@ -19,7 +19,7 @@ public class TreeMapCategorie implements SortedMap <String, ListeTache>
 		valeurs = new TreeMap<String, ListeTache>();
 	}
 	
-@Override
+	@Override
     public Comparator<? super String> comparator()
     {
         return valeurs.comparator();
