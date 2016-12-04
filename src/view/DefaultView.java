@@ -25,11 +25,13 @@ public class DefaultView extends JFrame
 	    add(gauche, "West");
 	}
 	
-	public JButton getButton(){
+	public JButton getButton()
+	{
 		return button;
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args)
+	{
 		DefaultView hv = new DefaultView();
 	}  
 	
