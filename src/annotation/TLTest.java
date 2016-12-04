@@ -2,7 +2,7 @@ package annotation;
 
 public @interface TLTest
 {
-	public enum STATUS {NOTEST, TOTEST, TESTED};
+	public enum STATUS_TEST {NOTEST, TOTEST, TESTED};
 
-	public abstract STATUS status(); 
+	public abstract STATUS_TEST status(); 
 }

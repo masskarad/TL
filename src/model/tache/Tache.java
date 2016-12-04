@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import annotation.TLTest;
-import annotation.TLTest.STATUS;
+import annotation.TLTest.STATUS_TEST;
 
 import org.joda.time.DateTime;
 
@@ -20,7 +20,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	private byte      avencement;
 	private DateTime  date_limite;
 	
-	@TLTest(status = STATUS.TESTED)
+	@TLTest(status = STATUS_TEST.TESTED)
 	public Tache()
 	{
 		titre       = SANS_TITRE;
@@ -28,7 +28,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		date_limite = DateTime.now().plusDays(1);
 	}
 	
-	@TLTest(status = STATUS.TESTED)
+	@TLTest(status = STATUS_TEST.TESTED)
 	public Tache(String p_titre)
 	{
 		titre       = p_titre;
@@ -36,7 +36,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		date_limite = DateTime.now().plusDays(1);
 	}
 	
-	@TLTest(status = STATUS.TESTED)
+	@TLTest(status = STATUS_TEST.TESTED)
 	public Tache(DateTime p_date_limite)
 	{
 		titre       = SANS_TITRE;
@@ -44,7 +44,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		date_limite = p_date_limite;
 	}
 	
-	@TLTest(status = STATUS.TESTED)
+	@TLTest(status = STATUS_TEST.TESTED)
 	public Tache(String p_titre, String p_categorie, DateTime p_date_limite)
 	{
 		titre       = p_titre;
@@ -52,19 +52,19 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		date_limite = p_date_limite;
 	}
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public final void setTitre(String p_nouveau_titre)
 	{
 		titre = p_nouveau_titre;
 	}
 		
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public final String getTitre()
 	{
 		return titre;
 	}
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public final int getAvencement()
 	{
 		return avencement;
@@ -77,13 +77,13 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	
 	public abstract void incrementeAvencement();
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public final DateTime getDateLimite()
 	{
 		return date_limite;
 	}
 	
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public boolean valide()
 	{
 		//DateTimeFormat dtf = new DateTimeFormat();
@@ -92,21 +92,21 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 	}
 	
 	@Override
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public boolean equals(Object o)
 	{
 		return false;
 	}
 	
 	@Override
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public int compareTo(Tache o)
 	{
 		return titre.compareTo(o.titre) + date_limite.compareTo(o.date_limite);
 	}
 	
 	@Override
-	@TLTest(status = STATUS.NOTEST)
+	@TLTest(status = STATUS_TEST.NOTEST)
 	public String toString()
 	{
 		StringBuilder string_builder = new StringBuilder();
@@ -116,7 +116,7 @@ public abstract class Tache implements Serializable, Comparable<Tache>
 		return string_builder.toString();
 	}
 	
-	@TLTest(status = STATUS.TOTEST)
+	@TLTest(status = STATUS_TEST.TOTEST)
 	public abstract boolean estEnRetard();
 	
 	public static void main(String [] Args)

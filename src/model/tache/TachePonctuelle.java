@@ -3,7 +3,7 @@ package model.tache;
 import org.joda.time.DateTime;
 
 import annotation.TLTest;
-import annotation.TLTest.STATUS;
+import annotation.TLTest.STATUS_TEST;
 
 @SuppressWarnings("serial")
 public final class TachePonctuelle extends Tache
@@ -29,7 +29,7 @@ public final class TachePonctuelle extends Tache
 		super(p_titre, p_categorie, p_date_limite);
 	}
 	
-	@TLTest(status = STATUS.TESTED)
+	@TLTest(status = STATUS_TEST.TESTED)
 	public boolean estEnRetard()
 	{
 		return DateTime.now().isAfter(getDateLimite());
