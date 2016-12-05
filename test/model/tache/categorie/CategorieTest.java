@@ -1,4 +1,4 @@
-package model.tache;
+package model.tache.categorie;
 
 import static org.junit.Assert.*;
 
